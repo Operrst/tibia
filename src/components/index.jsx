@@ -4,12 +4,12 @@ import axios from "axios";
 import "./styles.css";
 
  function TibiaMarket() {
-   const [tibia, setTibia] = useState("");
+   const [data, setData] = useState('');
    const [characters, setCharacters] = useState([])
    useEffect(()=>{
        axios.get('https://api.tibiadata.com/v3/highscores/all/experience/all').then((res)=>{
             console.log(res.data.highscores.highscore_list)
-             setTibia(res.data)
+            setData(res.data.highscores.highscore_list)
        })
    },[])
      return (
@@ -24,9 +24,14 @@ import "./styles.css";
                      <td>Level</td>
                      <td>Points</td>
                    </tr>
-                   {characters.map((character)=>(
-                   <tr key={character.rank}>
-                       <td>{character.highscores.highscore_list.id}</td>
+                   {data.map((dat) => (
+                   <tr key={dat.rank}>
+                       <td>{dat.rank}</td>
+                       <td>{dat.name}</td>
+                       <td>{dat.vocation}</td>
+                       <td>{dat.world}</td>
+                       <td>{dat.level}</td>
+                       <td>{dat.value}</td>
                    </tr>
                    ))}
                  </tbody>
