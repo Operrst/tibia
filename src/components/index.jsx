@@ -8,7 +8,7 @@ import "./styles.css";
    const [characters, setCharacters] = useState([])
    useEffect(()=>{
        axios.get('https://api.tibiadata.com/v3/highscores/all/experience/all').then((res)=>{
-            console.log(res.data)
+            console.log(res.data.highscores.highscore_list)
              setTibia(res.data)
        })
    },[])
