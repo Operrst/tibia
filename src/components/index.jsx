@@ -2,9 +2,10 @@ import { useState ,useEffect} from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
  function TibiaMarket() {
-   const [data, setData] = useState('');
+   const [data, setData] = useState([]);
    const [characters, setCharacters] = useState([])
    useEffect(()=>{
        axios.get('https://api.tibiadata.com/v3/highscores/all/experience/all').then((res)=>{
@@ -24,15 +25,21 @@ import "./styles.css";
                      <td>Level</td>
                      <td>Points</td>
                    </tr>
-                   {data.map((dat) => (
+                   {data.map((dat)=> (
                    <tr key={dat.rank}>
                        <td>{dat.rank}</td>
-                       <td>{dat.name}</td>
+                       <td >{dat.name}</td>
                        <td>{dat.vocation}</td>
                        <td>{dat.world}</td>
                        <td>{dat.level}</td>
                        <td>{dat.value}</td>
-                   </tr>
+                       <td>
+                          <a href={dat.name}>Link</a>
+                          
+                       </td>
+                       <Link to={`/character/${dat.rank}`}>{dat.name}</Link>
+                        </tr>
+                   
                    ))}
                  </tbody>
              </table>
