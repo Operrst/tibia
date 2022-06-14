@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
 function Characters (){
-    let { Characters} = useParams();
+    let { characterRank} = useParams();
     const [char,setChar] = useState([])
         useEffect(()=>{
-            axios.get(`https://api.tibiadata.com/v3/character/${Characters}`).then((res)=>{
+            axios.get(`https://api.tibiadata.com/v3/character/${characterRank}`).then((res)=>{
                 console.log(res)
                 setChar(res.data)
             })
