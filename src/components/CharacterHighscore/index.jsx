@@ -25,7 +25,6 @@ function Characters (){
                 <tr><td>World: {char.world}</td></tr> 
                 <tr><td>Residence: {char.residence}</td></tr>
                 <tr><td>Married To: {char.married_to}</td></tr>
-                <tr><td>Guild Membership: {char.guild.name} {char.guild.rank}</td></tr>
                 <tr><td>Last Login: {char.last_login}</td></tr>
                 <tr><td>Comment: {char.comment}</td></tr>
                 <tr><td>Account Status: {char.account_status}</td></tr>
