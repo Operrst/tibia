@@ -23,17 +23,17 @@ import { Link } from "react-router-dom";
                      <td>World</td>
                      <td>Level</td>
                      <td>Points</td>
-                   </tr>
-                   {data.map((dat)=> (
-                   <tr key={dat.rank}>
-                       <td>{dat.rank}</td>
-                       <td ><Link to={`/character/${dat.rank}`}>{dat.name}</Link></td>
-                       <td>{dat.vocation}</td>
-                       <td>{dat.world}</td>
-                       <td>{dat.level}</td>
-                       <td>{dat.value}</td>
-                       <td>
-                       </td>
+                      </tr>
+                      {data.map((dat)=> (
+                       <tr key={dat.rank}>
+                        <td>{dat.rank}</td>
+                        <td ><Link to={`/character/${dat.name}`}>{dat.name}</Link></td>
+                        <td>{dat.vocation}</td>
+                        <td>{dat.world}</td>
+                        <td>{dat.level}</td>
+                        <td>{dat.value}</td>
+                        <td>
+                        </td>
                         </tr>
                    
                    ))}
