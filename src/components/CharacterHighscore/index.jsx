@@ -16,7 +16,7 @@ function Characters (){
            <table>
            <tbody>
                  
-               <tr><td>Name: {char.name}</td></tr>
+                <tr><td>Name: {char.name}</td></tr>
                 <tr><td>Title: {char.title}</td></tr>
                 <tr><td>Sex: {char.sex}</td></tr>
                 <tr><td>Vocation: {char.vocation}</td></tr>
