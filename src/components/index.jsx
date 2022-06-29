@@ -4,19 +4,39 @@ import axios from "axios";
 import "./styles.css";
 import { Link } from "react-router-dom";
 
+
  function TibiaMarket() {
    const [data, setData] = useState([]);
+   
    useEffect(()=>{
+     if(data){
        axios.get('https://api.tibiadata.com/v3/highscores/all/experience/all').then((res)=>{
             console.log(res.data.highscores.highscore_list)
             setData(res.data.highscores.highscore_list)
-       })
+       })}
+       else {
+         setData("");
+        }
    },[])
+
+  
+
      return (
-         <form>
+       
+         <form style={{ 
+          backgroundImage: `url("https://static.tibia.com/images/global/header/background-artwork.jpg")`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          width: '100vw',
+          height: '100vh'
+         
+        }}>
+           <div className="Continer">
              <table>
-                 <tbody>
-                   <tr>
+                 <tbody  >
+                   <tr className="DoNotBreak" >
                      <td>Rank</td>
                      <td>Name</td>
                      <td>Vocation</td>
@@ -24,8 +44,8 @@ import { Link } from "react-router-dom";
                      <td>Level</td>
                      <td>Points</td>
                       </tr>
-                      {data.map((dat)=> (
-                       <tr key={dat.rank}>
+                      {data.map((dat,index)=> (
+                       <tr className={`${index % 2 == 0 ? 'background-brown' : 'background'}`} key={dat.rank} >
                         <td>{dat.rank}</td>
                         <td ><Link to={`/character/${dat.name}`}>{dat.name}</Link></td>
                         <td>{dat.vocation}</td>
@@ -39,44 +59,8 @@ import { Link } from "react-router-dom";
                    ))}
                  </tbody>
              </table>
+             </div>
          </form>
      )
 }
 export default TibiaMarket;
-// highscores.highscore_list
-
-// return  (
-//     <form>
-//     <div>
-//        <div className="main-site-container">
-//            <div className="main-header"></div>
-//            <div className="main-menu"></div>
-//            <div className="main-content">
-//             <div className="highscores"> 
-//                <div className="border_1">
-//                    <div className="border_2">
-//                        <div className="BoxContent">
-//                            <div className="TableContainer">
-//                                <table className="table1">
-//                                    <tbody>
-//                                        <tr>
-//                                            <td>
-//                                                <div className="InnerTableContainer">
-//                                                   <div>"elo"</div>
-//                                                </div>
-//                                            </td>
-//                                        </tr>
-//                                    </tbody>
-//                                </table>
-//                            </div>
-//                        </div>
-//                    </div>
-//                </div>  
-//              </div> 
-//            </div>
-//            <div className="main-themboxes"></div>
-//        </div>
-//     </div>
-//     </form>
-//    )
-// }
