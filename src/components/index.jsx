@@ -9,13 +9,13 @@ import { Link } from "react-router-dom";
    const [data, setData] = useState([]);
    
    useEffect(()=>{
-     if(data){
+     if(data.highscores.highscore_list.length > 0){
        axios.get('https://api.tibiadata.com/v3/highscores/all/experience/all').then((res)=>{
             console.log(res.data.highscores.highscore_list)
             setData(res.data.highscores.highscore_list)
        })}
        else {
-         setData("");
+         {data.map((dat)=>(dat.length > 0 ? data.map : <div>Nie ma danych</div>))}
         }
    },[])
 
@@ -44,8 +44,8 @@ import { Link } from "react-router-dom";
                      <td>Level</td>
                      <td>Points</td>
                       </tr>
-                      {data.map((dat,index)=> (
-                       <tr className={`${index % 2 == 0 ? 'background-brown' : 'background'}`} key={dat.rank} >
+                      {data.map((dat,index)=> 
+                       <tr  className={`${index % 2 == 0 ? 'background-brown' : 'background'}`} key={dat.rank} >
                         <td>{dat.rank}</td>
                         <td ><Link to={`/character/${dat.name}`}>{dat.name}</Link></td>
                         <td>{dat.vocation}</td>
@@ -56,7 +56,7 @@ import { Link } from "react-router-dom";
                         </td>
                         </tr>
                    
-                   ))}
+                   )}
                  </tbody>
              </table>
              </div>
