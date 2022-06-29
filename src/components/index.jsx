@@ -9,13 +9,13 @@ import { Link } from "react-router-dom";
    const [data, setData] = useState([]);
    
    useEffect(()=>{
-     if(data.highscores.highscore_list.length > 0){
+     if(data){
        axios.get('https://api.tibiadata.com/v3/highscores/all/experience/all').then((res)=>{
             console.log(res.data.highscores.highscore_list)
             setData(res.data.highscores.highscore_list)
        })}
        else {
-         {data.map((dat)=>(dat.length > 0 ? data.map : <div>Nie ma danych</div>))}
+         {data.map((dat)=>(dat.length > 0 ? data.map : <div>Nothing there</div>))}
         }
    },[])
 
