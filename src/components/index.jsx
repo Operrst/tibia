@@ -14,9 +14,7 @@ import { Link } from "react-router-dom";
             console.log(res.data.highscores.highscore_list)
             setData(res.data.highscores.highscore_list)
        })}
-       else {
-         {data.map((dat)=>(dat.length > 0 ? data.map : <div>Nothing there</div>))}
-        }
+       
    },[])
 
   
